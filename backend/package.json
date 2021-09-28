@@ -1,0 +1,15 @@
+{
+  "main": "index.js",
+  "type": "module",
+  "license": "ISC",
+  "scripts": {
+    "start": "echo \"What do you mean start? I don't understand! You need to teach me how to start first :)\" && exit 1"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "faker": "^5.5.3",
+    "mongoose": "^6.0.7"
+  }
+}

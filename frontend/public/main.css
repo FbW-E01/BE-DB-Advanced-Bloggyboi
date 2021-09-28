@@ -1,0 +1,92 @@
+/* Adapted from https://codepen.io/BedeProgramistka/pen/ZoXVdj */
+
+:root {
+  --white: #ffffff;
+  --blue: #066781;
+  --orange: #fc4628;
+  --yellow: #ffdd1c;
+  --lightblue: #5faaa7;
+}
+
+body,
+html {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.container {
+  display: grid;
+  grid-gap: 0px;
+  min-height: 100vh;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 200px auto 200px;
+  grid-template-areas:
+    "header header"
+    "content sidebar"
+    "footer footer";
+}
+
+.item {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  font-size: 35px;
+  color: var(--white);
+}
+
+.item1 {
+  grid-area: header;
+  background-color: var(--blue);
+}
+
+.item2 {
+  background-color: var(--orange);
+  grid-area: sidebar;
+}
+
+.item3 {
+  background-color: var(--yellow);
+  grid-area: content;
+}
+
+.item4 {
+  background-color: var(--lightblue);
+  grid-area: footer;
+}
+
+@media (max-width: 700px) {
+  .container {
+    grid-template-areas:
+      "header header header"
+      "content content content"
+      "sidebar sidebar sidebar"
+      "footer footer footer";
+  }
+}
+
+.post {
+  color: black;
+  padding: 1em;
+  margin: 1em;
+  font-size: 0.5em;
+}
+
+.post p {
+  margin: 0.2em 0;
+}
+
+.post img {
+  width: 100%;
+}
+
+.post .tag {
+  color: var(--blue);
+  cursor: pointer;
+  margin-right: 0.3em;
+}
+
+.post .commentLink {
+  color: grey;
+  margin: 0.5em 0;
+  cursor: pointer;
+}
