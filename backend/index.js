@@ -19,7 +19,7 @@ app.use(cors());
 app.use(express.json());
 app.use(requestlogger);
 
-// Connect to MongoDB
+// Connect to MongoDB - it should be OK to just create a single connection and keep using that: https://stackoverflow.com/questions/38693792
 const db = new Database();
 await db.connect();
 
