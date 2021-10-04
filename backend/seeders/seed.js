@@ -21,8 +21,8 @@ export default async function seed() {
       author: faker.internet.userName(),
       content: faker.lorem.sentence(),
       image: faker.image.image(),
-      comments: [],
       // QUESTION: Why don't I need to give a value to totalComments here?
+      comments: [],
     });
     await post.save();
     fakePosts.push(post);
