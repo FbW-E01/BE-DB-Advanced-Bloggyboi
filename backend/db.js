@@ -1,20 +1,14 @@
 import mongoose from "mongoose";
 
-// NOTE: These values SHOULD be coming from .env!
-const username = "jimmy";
-const password = "passw0rd";
-const db = "exampledb";
+export default async function connect() {
+  const { DB_USER, DB_PASS, DB_HOST, DB_PORT, DB_NAME } = process.env;
+  const connectionString = `mongodb://${DB_USER}:${DB_PASS}@${DB_HOST}:${DB_PORT}/${DB_NAME}`;
 
-const connectionString = `mongodb://${username}:${password}@localhost:27017/${db}`;
+  mongoose.connection.on("error",         e => console.log(">> Error!", e) || process.exit(0));
+  mongoose.connection.on("connecting",    () => console.log(">> Connecting"));
+  mongoose.connection.on("connected",     () => console.log(">> Connected"));
+  mongoose.connection.on("disconnecting", () => console.log(">> Disconnecting"));
+  mongoose.connection.on("disconnected",  () => console.log(">> Disconnected"));
 
-mongoose.connection.on("error", (e) => console.log(">> Error!", e) || process.exit(0));
-mongoose.connection.on("connecting", () => console.log(">> Connecting"));
-mongoose.connection.on("connected", () => console.log(">> Connected"));
-mongoose.connection.on("disconnecting", () => console.log(">> Disconnecting"));
-mongoose.connection.on("disconnected", () => console.log(">> Disconnected"));
-
-export default class Database {
-  async connect() {
-    return await mongoose.connect(connectionString);
-  }
+  return await mongoose.connect(connectionString);
 }
